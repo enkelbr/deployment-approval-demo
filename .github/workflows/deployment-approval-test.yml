@@ -8,7 +8,7 @@ jobs:
   simulate-deploy-prd:
     name: Deploy PRD - ${{ matrix.customer }}
     runs-on: ubuntu-latest
-    environment: prd
+    environment: prd-${{ matrix.customer }}
     strategy:
       fail-fast: false
       matrix:
