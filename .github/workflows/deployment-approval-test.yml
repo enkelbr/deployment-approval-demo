@@ -20,3 +20,11 @@ jobs:
           echo "Simulating deployment process..."
           sleep 5
           echo "OK - Deployment completed for ${{ matrix.customer }}"
+  
+  finish:
+    needs: simulate-deploy-prd
+    runs-on: ubuntu-latest
+    steps:
+      - name: Simulate deployment
+        run: |
+          echo "OK"
