@@ -1,0 +1,22 @@
+name: Deployment Approval Test
+run-name: "Test deployment approval for multiple customers"
+
+on:
+  workflow_dispatch:
+
+jobs:
+  simulate-deploy-prd:
+    name: Deploy PRD - ${{ matrix.customer }}
+    runs-on: ubuntu-latest
+    environment: prd
+    strategy:
+      fail-fast: false
+      matrix:
+        customer: [customer1, customer2, customer3]
+    steps:
+      - name: Simulate deployment
+        run: |
+          echo "Deploying to PRD for ${{ matrix.customer }}"
+          echo "Simulating deployment process..."
+          sleep 5
+          echo "OK - Deployment completed for ${{ matrix.customer }}"
